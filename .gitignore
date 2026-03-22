@@ -1,3 +1,7 @@
 # Rust compiled files
 *.exe
 *.pdb
+
+# Cargo
+*.lock
+*/target
