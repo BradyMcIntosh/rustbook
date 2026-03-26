@@ -14,4 +14,9 @@ fn main() {
     }
 
     println!("The value of y is: {y}");
+
+    let spaces = "   ";
+    println!("Spaces: '{spaces}'");
+    let spaces = spaces.len();
+    print!("Space length: {spaces}");
 }
