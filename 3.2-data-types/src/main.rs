@@ -1,4 +1,6 @@
 fn main() {
+    println!("NUMBERS:");
+
     let x = 2.0; // f64
     let y: f32 = 3.0; // f32
     println!("x = {x}, y = {y}");
@@ -25,9 +27,13 @@ fn main() {
     let remainder = 43 % 5;
     println!("43 % 5 = {remainder}");
 
+    println!("BOOLEANS:");
+
     let t = true;
     let f: bool = false; // with explicit type annotation
     println!("t = {t}, f = {f}");
+
+    println!("CHARS:");
 
     let c = 'z';
     let z: char = 'ℤ'; // with explicit type annotation
