@@ -24,4 +24,13 @@ fn main() {
     // remainder
     let remainder = 43 % 5;
     println!("43 % 5 = {remainder}");
+
+    let t = true;
+    let f: bool = false; // with explicit type annotation
+    println!("t = {t}, f = {f}");
+
+    let c = 'z';
+    let z: char = 'ℤ'; // with explicit type annotation
+    let heart_eyed_cat = '😻';
+    println!("characters = '{c}','{z}','{heart_eyed_cat}'");
 }
