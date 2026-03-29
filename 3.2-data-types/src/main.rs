@@ -39,4 +39,19 @@ fn main() {
     let z: char = 'ℤ'; // with explicit type annotation
     let heart_eyed_cat = '😻';
     println!("characters = '{c}','{z}','{heart_eyed_cat}'");
+
+    println!("TUPLES:");
+
+    let tup = (500, 6.4, 1);
+
+    let (x, y, z) = tup;
+
+    let tup0 = tup.0;
+    let tup1 = tup.1;
+    let tup2 = tup.2;
+
+    println!("tuple (x,y,z) = ({x},{y},{z})");
+    println!("tup.0 = {tup0}");
+    println!("tup.1 = {tup1}");
+    println!("tup.2 = {tup2}");
 }
