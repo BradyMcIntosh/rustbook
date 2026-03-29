@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     println!("NUMBERS:");
 
@@ -54,4 +56,40 @@ fn main() {
     println!("tup.0 = {tup0}");
     println!("tup.1 = {tup1}");
     println!("tup.2 = {tup2}");
+
+    println!("ARRAYS:");
+
+    let arra = [1, 2, 3, 4, 5];
+    println!("array = {arra:?}");
+
+    let months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"];
+    
+    let month0 = months[0];
+    let month1 = months[1];
+    let month11 = months[11];
+
+    println!("From month array, months 0, 1, and 11: {month0}, {month1}, {month11}");
+
+    let arrb = [3; 5];
+    println!("array[3;5] = {arrb:?}");
+
+    println!("This is your array: {arra:?}");
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = arra[index];
+
+    println!("The value of the element at index {index} is: {element}");
 }
