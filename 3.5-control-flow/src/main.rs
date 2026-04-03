@@ -114,6 +114,4 @@ fn main() {
         println!("{number}!");
     }
     println!("LIFTOFF!!!");
-
-    let b = [1;2];
 }
