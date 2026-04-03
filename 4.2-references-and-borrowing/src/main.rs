@@ -30,6 +30,12 @@ fn main() {
     let s_len1 = str::len(&s);  // explicit reference
     let s_len2 = s.len();       // implicit reference
     assert_eq!(s_len1, s_len2);
+
+    let mut v: Vec<i32> = vec![1, 2, 3];
+    let num: &i32 = &v[2];
+    println!("Third element is {}", *num);
+    println!("Again, the third element is {}", *num);
+    v.push(4);
 }
 
 fn greet(g1: &String, g2: &String) { // note the ampersands
