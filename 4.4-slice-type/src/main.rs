@@ -12,7 +12,11 @@ fn main() {
     let _slice4: &str = &s[..2];
 
     let firstword = first_word(&s);
-    println!("first word: '{firstword}'")
+    println!("first word: '{firstword}'");
+
+    let a = [1, 2, 3, 4, 5];
+    let aslice = &a[1..3];
+    assert_eq!(aslice, &[2, 3]);
 }
 
 fn first_word(s: &String) -> &str {
