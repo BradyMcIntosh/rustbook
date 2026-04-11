@@ -6,8 +6,8 @@ fn main() {
 
     println!("slices: '{hello}' & '{world}'");
 
-    let slice1: &str = &s[..5];
-    let slice2: &str = &s[6..];
-    let slice3: &str = &s[..];
-    let slice4: &str = &s[..2];
+    let _slice1: &str = &s[..5];
+    let _slice2: &str = &s[6..];
+    let _slice3: &str = &s[..];
+    let _slice4: &str = &s[..2];
 }
