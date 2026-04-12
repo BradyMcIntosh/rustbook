@@ -25,6 +25,14 @@ fn main() {
     let user3 = build_user(String::from("thirdguy@example.com"), String::from("randomname789"));
 
     print_user(&user3);
+
+    // struct update syntax
+    let user4 = User {
+        email: String::from("updated@example.com"),
+        ..user1
+    };
+
+    print_user(&user4);
 }
 
 struct User {
