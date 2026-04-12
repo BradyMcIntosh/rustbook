@@ -33,6 +33,13 @@ fn main() {
     };
 
     print_user(&user4);
+
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+
+    print_color(&black);
+    print_point(&origin);
+
 }
 
 struct User {
@@ -41,6 +48,9 @@ struct User {
     email: String,
     sign_in_count: u64,
 }
+
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
 
 fn build_user(email: String, username: String) -> User {
     User {
@@ -53,4 +63,12 @@ fn build_user(email: String, username: String) -> User {
 
 fn print_user(user: &User) {
     println!("User: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user.username, user.email, user.active, user.sign_in_count);
+}
+
+fn print_color(color: &Color) {
+    println!("Color: {0},{1},{2}", color.0, color.1, color.2);
+}
+
+fn print_point(point: &Point) {
+    println!("Point: {0},{1},{2}", point.0, point.1, point.2)
 }
