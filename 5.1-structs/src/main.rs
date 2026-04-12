@@ -6,7 +6,7 @@ fn main() {
         sign_in_count: 1,
     };
 
-    println!("User1: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user1.username, user1.email, user1.active, user1.sign_in_count);
+    print_user(&user1);
 
     let mut user2 = User {
         email: String::from("another@example.com"),
@@ -15,16 +15,16 @@ fn main() {
         sign_in_count: 1,
     };
 
-    println!("User2: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user2.username, user2.email, user2.active, user2.sign_in_count);
+    print_user(&user2);
 
     user2.active = false;
     user2.sign_in_count = 3;
 
-    println!("User2: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user2.username, user2.email, user2.active, user2.sign_in_count);
+    print_user(&user2);
 
     let user3 = build_user(String::from("thirdguy@example.com"), String::from("randomname789"));
 
-    println!("User3: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user3.username, user3.email, user3.active, user3.sign_in_count);
+    print_user(&user3);
 }
 
 struct User {
@@ -41,4 +41,8 @@ fn build_user(email: String, username: String) -> User {
         email,
         sign_in_count: 1,
     }
+}
+
+fn print_user(user: &User) {
+    println!("User: '{0}' at '{1}'; active: {2}; sign-in count: {3}", user.username, user.email, user.active, user.sign_in_count);
 }
