@@ -12,6 +12,17 @@ impl Rectangle {
         }
     }
 
+    fn set_width(&mut self, width: u32) {
+        self.width = width;
+    }
+
+    fn max(self, other: Rectangle) -> Rectangle {
+        Rectangle {
+            width: self.width.max(other.width),
+            height: self.height.max(other.height),
+        }
+    }
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -50,7 +61,7 @@ fn main() {
     );
 
     println!(
-        "Two more rectangles are {}x{} and {}x{}.",
+        "Two more rectangles are 2: {}x{} and 3: {}x{}.",
         rect2.width(), rect2.height(), rect3.width(), rect3.height()
     );
 
@@ -72,4 +83,22 @@ fn main() {
         "Here is a square: {}{}, area = {}.",
         sq1.width(), sq1.height(), sq1.area()
     );
+
+    let rect4 = Rectangle {
+        width: 1,
+        height: 100,
+    };
+
+    println!(
+        "Rect4 = {}x{} | {}",
+        rect4.width(), rect4.height(), rect4.area()
+    );
+
+    let rect5 = rect4.max(rect3);
+
+    println!(
+        "Rect 5 is the max of rect3 and rect4.\nDimensions are {}x{} | {}",
+        rect5.width(), rect5.height(), rect5.area()
+    )
+
 }
