@@ -1,11 +1,19 @@
+struct IpV4Addr {
+    // Something!
+}
+
+struct IpV6Addr {
+    // Something!
+}
+
 enum IpAddrKind {
-    V4(u8, u8, u8, u8),
-    V6(String),
+    V4(IpV4Addr),
+    V6(IpV6Addr),
 }
 
 fn main() {
-    let home = IpAddrKind::V4(127, 0, 0, 1);
-    let loopback = IpAddrKind::V6(String::from("::1"));
+    let home = IpAddrKind::V4(IpV4Addr {});
+    let loopback = IpAddrKind::V6(IpV6Addr {});
 
     // can't get the inner values yet :)
 }
