@@ -24,6 +24,13 @@ fn value_in_cents(coin: Coin) -> u8 {
     }
 }
 
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}
+
 fn main() {
     let penny = Coin::Penny;
     let nickel = Coin::Nickel;
@@ -36,4 +43,13 @@ fn main() {
     println!("Dime    = {}c", value_in_cents(dime));
     println!("Quarter = {}c", value_in_cents(quarter1));
     println!("Quarter = {}c", value_in_cents(quarter2));
+
+    let five = Some(5);
+    println!("Five = {five:?}");
+
+    let six = plus_one(five);
+    println!("Five plus one = {six:?}");
+
+    let none = plus_one(None);
+    println!("None = {none:?}");
 }
