@@ -23,9 +23,7 @@ enum Coin {
 }
 
 fn describe_state_quarter(coin: Coin) -> Option<String> {
-    let state = if let Coin::Quarter(state) = coin {
-        state
-    } else {
+    let Coin::Quarter(state) = coin else {
         return None;
     };
 
