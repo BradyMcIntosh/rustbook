@@ -14,5 +14,5 @@ fn main() {
 
     let mut s3 = String::from("hel");
     s3.push('p');
-    println!("{s3}")
+    println!("{s3}");
 }
