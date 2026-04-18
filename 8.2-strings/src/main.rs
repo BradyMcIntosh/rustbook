@@ -11,4 +11,8 @@ fn main() {
     let s2 = "bar";
     s1.push_str(s2);
     println!("s1 is {s1}");
+
+    let mut s3 = String::from("hel");
+    s3.push('p');
+    println!("{s3}")
 }
