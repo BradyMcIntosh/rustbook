@@ -25,4 +25,32 @@ fn main() {
 
     println!("{map:?}");
     // println!("{field_name}: {field_value}"); <-- can't use field_name and field_value here
+
+    scores.insert(String::from("Blue"), 25);
+
+    println!("All team scores (after blue was updated):");
+
+    for (team, score) in &scores {
+        println!("{team}: {score}");
+    }
+
+    scores.entry(String::from("Yellow")).or_insert(500);
+    scores.entry(String::from("Red")).or_insert(499);
+
+    println!("All team scores (after more updates):");
+
+    for (team, score) in &scores {
+        println!("{team}: {score}");
+    }
+
+    let text = "the quick brown fox jumps over the lazy dog";
+
+    let mut wordmap = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = wordmap.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{wordmap:?}")
 }
