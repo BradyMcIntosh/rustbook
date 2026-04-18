@@ -31,4 +31,13 @@ fn main() {
     let s10 = format!("{s7}-{s8}-{s9}");
 
     println!("{s10}");
+
+    println!("Зд");
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
+
+    for b in "Зд".bytes() {
+        println!("{b}");
+    }
 }
