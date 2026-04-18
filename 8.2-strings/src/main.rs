@@ -15,4 +15,12 @@ fn main() {
     let mut s3 = String::from("hel");
     s3.push('p');
     println!("{s3}");
+
+    let s4 = String::from("This is my ");
+    let s5 = String::from("example!");
+    let s6 = s4 + &s5;
+
+    // println!("s4 is '{s4}'"); <-- s4 was consumed by + operator
+    println!("s5 is '{s5}'");
+    println!("s6 is '{s6}'");
 }
