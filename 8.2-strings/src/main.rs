@@ -23,4 +23,12 @@ fn main() {
     // println!("s4 is '{s4}'"); <-- s4 was consumed by + operator
     println!("s5 is '{s5}'");
     println!("s6 is '{s6}'");
+
+    let s7 = String::from("tic");
+    let s8 = String::from("tac");
+    let s9 = String::from("toe");
+
+    let s10 = format!("{s7}-{s8}-{s9}");
+
+    println!("{s10}");
 }
