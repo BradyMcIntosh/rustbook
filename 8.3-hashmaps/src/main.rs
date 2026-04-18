@@ -10,4 +10,10 @@ fn main() {
     let score = scores.get(&team_name).copied().unwrap_or(0);
 
     println!("Team {team_name}'s score is {score}!");
+
+    println!("All team scores:");
+
+    for (team, score) in &scores {
+        println!("{team}: {score}");
+    }
 }
