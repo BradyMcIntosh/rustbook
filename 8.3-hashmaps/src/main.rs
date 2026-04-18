@@ -16,4 +16,13 @@ fn main() {
     for (team, score) in &scores {
         println!("{team}: {score}");
     }
+
+    let field_name = String::from("Favourite colour");
+    let field_value = String::from("Orange");
+
+    let mut map = HashMap::new();
+    map.insert(field_name, field_value);
+
+    println!("{map:?}");
+    // println!("{field_name}: {field_value}"); <-- can't use field_name and field_value here
 }
