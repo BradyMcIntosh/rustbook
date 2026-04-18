@@ -16,4 +16,16 @@ fn main() {
         Some(fourth) => println!("The fourth element is {fourth}."),
         None => println!("There is no fourth element.")
     }
+
+    for i in &v {
+        println!("Number: {i}!")
+    }
+
+    let mut w = vec![111, 64, 2];
+    println!("New vector: {w:?}");
+
+    for i in &mut w {
+        *i += 50;
+    }
+    println!("After modification: {w:?}");
 }
