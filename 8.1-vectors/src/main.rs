@@ -1,3 +1,10 @@
+#[derive(Debug)]
+enum SpreadsheetCell {
+    Int(i32),
+    Float(f64),
+    Text(String),
+}
+
 fn main() {
     let mut v: Vec<i32> = Vec::new();
 
@@ -28,4 +35,12 @@ fn main() {
         *i += 50;
     }
     println!("After modification: {w:?}");
+
+    let row = vec![
+        SpreadsheetCell::Int(6),
+        SpreadsheetCell::Float(0.7),
+        SpreadsheetCell::Text(String::from("example")),
+    ];
+
+    println!("My spreadsheet row: {row:?}");
 }
