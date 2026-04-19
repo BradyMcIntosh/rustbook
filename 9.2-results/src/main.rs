@@ -21,4 +21,6 @@ fn main() {
     };
 
     println!("File has been opened: hello.txt");
+
+    let _greeting_file_2 = File::open("world.txt").unwrap();
 }
