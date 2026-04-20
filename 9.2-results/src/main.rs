@@ -1,3 +1,4 @@
+use std::fs;
 use std::fs::File;
 use std::io::{self, ErrorKind, Read};
 
@@ -18,9 +19,7 @@ fn _read_username_from_file() -> Result<String, io::Error> {
 }
 
 fn read_username_from_file_2() -> Result<String, io::Error> {
-    let mut username = String::new();
-    File::open("username.txt")?.read_to_string(&mut username)?;
-    Ok(username)
+    fs::read_to_string("username.txt")
 }
 
 fn main() {
