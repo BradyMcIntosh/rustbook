@@ -16,6 +16,16 @@ struct Point<T, U> {
     y: U,
 }
 
+impl<T, U> Point<T, U> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+
+    fn y(&self) -> &U {
+        &self.y
+    }
+}
+
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
@@ -34,4 +44,5 @@ fn main() {
 
     let p_mix = Point { x: 0, y: 3.14159 };
     println!("Mix: {p_mix:?}!");
+    println!("Getting elements: '{}', '{}'", p_mix.x(), p_mix.y());
 }
