@@ -24,6 +24,13 @@ impl<T, U> Point<T, U> {
     fn y(&self) -> &U {
         &self.y
     }
+
+    fn mixup<T2, U2>(self, other: Point<T2, U2>) -> Point<T, U2> {
+        Point {
+            x: self.x,
+            y: other.y,
+        }
+    }
 }
 
 fn main() {
@@ -45,4 +52,7 @@ fn main() {
     let p_mix = Point { x: 0, y: 3.14159 };
     println!("Mix: {p_mix:?}!");
     println!("Getting elements: '{}', '{}'", p_mix.x(), p_mix.y());
+
+    let p_boggle = p_integer.mixup(p_float);
+    println!("Mixup function: {p_boggle:?}!");
 }
