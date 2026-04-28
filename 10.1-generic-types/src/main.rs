@@ -30,5 +30,5 @@ fn main() {
     let p_integer = Point { x: 5, y: 10 };
     let p_float = Point { x: 1.1, y: 4.4 };
 
-    println!("Int point: {p_integer:?}, float point: {p_float:?}!")
+    println!("Int point: {p_integer:?}, float point: {p_float:?}!");
 }
