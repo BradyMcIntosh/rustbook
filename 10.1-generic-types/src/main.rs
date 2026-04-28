@@ -11,9 +11,9 @@ fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
 }
 
 #[derive(Debug)]
-struct Point<T> {
+struct Point<T, U> {
     x: T,
-    y: T,
+    y: U,
 }
 
 fn main() {
@@ -31,4 +31,7 @@ fn main() {
     let p_float = Point { x: 1.1, y: 4.4 };
 
     println!("Int point: {p_integer:?}, float point: {p_float:?}!");
+
+    let p_mix = Point { x: 0, y: 3.14159 };
+    println!("Mix: {p_mix:?}!");
 }
