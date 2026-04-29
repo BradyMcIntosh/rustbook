@@ -52,3 +52,19 @@ impl Summary for SocialPost {
         format!("{}: {}", self.username, self.content)
     }
 }
+
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news: {}", item.summarize());
+}
+
+pub fn push<T: Summary>(item: &T) {
+    println!("Here's an update: {}", item.summarize());
+}
+
+pub fn pair_up<T, U>(t: &T, u: U) -> String
+where
+    T: Summary,
+    U: Clone + Summary,
+{
+    format!("{} | {}", t.summarize(), u.summarize())
+}
