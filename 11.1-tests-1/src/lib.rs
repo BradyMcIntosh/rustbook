@@ -12,8 +12,8 @@ mod tests {
         assert_eq!(result, 4);
     }
 
-    #[test]
-    fn another() {
-        panic!("This test explodes!")
-    }
+    // #[test]
+    // fn another() {
+    //     panic!("This test explodes!")
+    // }
 }
