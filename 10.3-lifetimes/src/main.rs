@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() { x } else { y }
 }
@@ -15,6 +17,17 @@ impl<'a> ImportantExcerpt<'a> {
         println!("Hear ye, hear ye! {announcement}");
         self.part
     }
+}
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str,
+    y: &'a str,
+    ann: T,
+) -> &'a str
+where T: Display,
+{
+    println!("Announcement: {ann}");
+    if x.len() > y.len() { x } else { y }
 }
 
 fn main() {
@@ -37,4 +50,6 @@ fn main() {
     let s: &'static str = "I have a static lifetime.";
     println!("This string has a static lifetime: '{s}'");
     println!("I don't know what that's good for, but I like how it sounds.");
+
+    println!("{}", longest_with_an_announcement("abcd", "lorem ipsum", "The longest is...!"));
 }
