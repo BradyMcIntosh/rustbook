@@ -6,6 +6,17 @@ struct ImportantExcerpt<'a> {
     part: &'a str,
 }
 
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+
+    fn announce_and_return_part(&self, announcement: &str) ->&str {
+        println!("Hear ye, hear ye! {announcement}");
+        self.part
+    }
+}
+
 fn main() {
     let string1 = String::from("abcd");
     let string2 = "xyz";
@@ -19,5 +30,11 @@ fn main() {
         part: first_sentence
     };
 
-    println!("First sentence of novel: '{0}'", i.part);
+    println!("First sentence of novel: '{0}', lvl {1}", i.part, i.level());
+
+    println!("Anyway, {}", i.announce_and_return_part("I forgot what I was going to say..."));
+
+    let s: &'static str = "I have a static lifetime.";
+    println!("This string has a static lifetime: '{s}'");
+    println!("I don't know what that's good for, but I like how it sounds.");
 }
