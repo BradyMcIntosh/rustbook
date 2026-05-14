@@ -60,12 +60,12 @@ fn main() {
 
     println!("{} has been calculated.", expensive_closure(2));
 
-    let list = vec![1, 2, 3];
+    let mut list = vec![1, 2, 3];
     println!("Before defining closure: {list:?}");
 
-    let only_borrows = || println!("From closure: {list:?}");
+    let mut borrows_mutably = || list.push(7);
 
-    println!("Before calling closure: {list:?}");
-    only_borrows();
+    println!("(can't print before calling closure)");
+    borrows_mutably();
     println!("After calling closure: {list:?}");
 }
