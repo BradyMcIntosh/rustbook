@@ -88,6 +88,10 @@ fn main() {
         Rectangle { width: 7, height: 12 },
     ];
 
-    list3.sort_by_key(|r| r.width);
-    println!("{list3:#?}");
+    let mut num_sort_operations = 0;
+    list3.sort_by_key(|r| {
+        num_sort_operations += 1;
+        r.width
+    });
+    println!("{list3:#?}, sorted in {num_sort_operations} operations");
 }
