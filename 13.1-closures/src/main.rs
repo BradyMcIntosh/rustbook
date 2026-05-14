@@ -58,5 +58,5 @@ fn main() {
         num
     };
 
-    println!("{} has been calculated.", expensive_closure(2))
+    println!("{} has been calculated.", expensive_closure(2));
 }
