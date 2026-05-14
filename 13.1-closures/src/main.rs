@@ -68,4 +68,11 @@ fn main() {
     println!("(can't print before calling closure)");
     borrows_mutably();
     println!("After calling closure: {list:?}");
+
+    let list2 = vec![1, 2, 3];
+    println!("Before defining threaded closure: {list2:?}");
+
+    thread::spawn(move || println!("From thread: {list2:?}"))
+        .join()
+        .unwrap();
 }
