@@ -35,4 +35,17 @@ Trust me.";
 
         assert_eq!(vec!["Rust:", "Trust me."], search_case_insensitive(query, contents))
     }
+
+    #[test]
+    fn case_insensitive_long() {
+        let query = "rUsT";
+        let contents = &"\
+Rust:
+safe, fast, productive.
+Pick three.
+Trust me.
+".repeat(100);
+
+        assert_eq!(["Rust:", "Trust me."].repeat(100), search_case_insensitive(query, contents))
+    }
 }
