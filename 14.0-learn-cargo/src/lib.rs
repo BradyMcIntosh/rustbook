@@ -17,6 +17,10 @@ pub fn sum(x: i32, y: i32) -> i32 {
     x + y
 }
 
+pub use self::kinds::EasyNumber;
+pub use self::kinds::HardNumber;
+pub use self::utils::add;
+
 pub mod kinds {
     /// The classic numbers everyone should know.
     pub enum EasyNumber {
