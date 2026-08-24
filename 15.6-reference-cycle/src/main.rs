@@ -16,7 +16,14 @@ impl List {
     }
 }
 
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    children: RefCell<Vec<Rc<Node>>>,
+}
+
 fn main() {
+    // Ref cycles
     let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
 
     println!("a init rc count             = {}", Rc::strong_count(&a));
@@ -37,4 +44,15 @@ fn main() {
 
     // This will cause a stack overflow because a -> b -> a -> b, etc
     // println!("a next item = {:?}", a.tail());
+
+    // Nodes
+    let leaf = Rc::new(Node {
+        value: 3,
+        children: RefCell::new(vec![]),
+    });
+
+    let branch = Rc::new(Node {
+        value: 5,
+        children: RefCell::new(vec![Rc::clone(&leaf)]),
+    });
 }
