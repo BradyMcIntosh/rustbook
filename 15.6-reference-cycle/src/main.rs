@@ -1,5 +1,6 @@
 use crate::List::{Cons, Nil};
-use std::{cell::RefCell, rc::{Rc, Weak}};
+use std::cell::RefCell;
+use std::rc::{Rc, Weak};
 
 #[derive(Debug)]
 enum List {
