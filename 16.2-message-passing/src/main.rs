@@ -1,4 +1,5 @@
-use std::{sync::mpsc, thread};
+use std::sync::mpsc;
+use std::thread;
 
 fn main() {
     let (tx, rx) = mpsc::channel();
