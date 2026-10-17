@@ -22,6 +22,21 @@ fn main() {
     trpl::block_on(async {
         let (tx, mut rx) = trpl::channel();
 
+        let tx1 = tx.clone();
+        let tx1_fut = async move {
+            let vals = vec![
+                String::from("more"),
+                String::from("messages"),
+                String::from("for"),
+                String::from("you"),
+            ];
+
+            for val in vals {
+                tx1.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(500)).await;
+            }
+        };
+
         let tx_fut = async move {
             let vals = vec![
                 String::from("hi"),
@@ -42,6 +57,6 @@ fn main() {
             }
         };
 
-        trpl::join(tx_fut, rx_fut).await;
+        trpl::join!(tx_fut, tx1_fut, rx_fut);
     });
 }
