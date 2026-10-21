@@ -2,7 +2,6 @@ use std::{thread, time::Duration};
 
 fn main() {
     trpl::block_on(async {
-
         let one_ms = Duration::from_millis(1);
 
         let a = async {
