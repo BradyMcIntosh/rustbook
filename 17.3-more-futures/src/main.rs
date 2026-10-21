@@ -1,5 +1,7 @@
 use std::{thread, time::Duration};
 
+use trpl::Either;
+
 fn main() {
     trpl::block_on(async {
         let a = async {
@@ -27,10 +29,29 @@ fn main() {
         };
 
         trpl::select(a, b).await;
+
+        let slow = async {
+            trpl::sleep(Duration::from_secs(5)).await;
+            "Finally finished!"
+        };
+
+        match timeout(slow, Duration::from_secs(2)).await {
+            Ok(message) => println!("Succeeded with {message}"),
+            Err(duration) => {
+                println!("Failed after {} seconds", duration.as_secs())
+            }
+        }
     });
 }
 
 fn slow(name: &str, ms: u64) {
     thread::sleep(Duration::from_millis(ms));
     println!("'{name}' ran for {ms}ms")
+}
+
+async fn timeout<F: Future>(future_to_try: F, max_time: Duration) -> Result<F::Output, Duration> {
+    match trpl::select(future_to_try, trpl::sleep(max_time)).await {
+        Either::Left(output) => Ok(output),
+        Either::Right(_) => Err(max_time),
+    }
 }
