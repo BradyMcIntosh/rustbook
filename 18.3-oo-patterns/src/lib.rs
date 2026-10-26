@@ -1,3 +1,27 @@
+pub struct TypePost {
+    content: String,
+}
+
+pub struct TypeDraftPost {
+    content: String,
+}
+
+impl TypePost {
+    pub fn new() -> TypeDraftPost {
+        TypeDraftPost { content: String::new(), }
+    }
+
+    pub fn content(&self) -> &str {
+        &self.content
+    }
+}
+
+impl TypeDraftPost {
+    pub fn add_text(&mut self, content: &str) {
+        self.content.push_str(content);
+    }
+}
+
 pub struct Post {
     state: Option<Box<dyn State>>,
     content: String,

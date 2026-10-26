@@ -1,4 +1,4 @@
-use oo_patterns::Post;
+use oo_patterns::{Post, TypePost};
 
 fn main() {
     let mut post = Post::new();
@@ -17,4 +17,8 @@ fn main() {
     post2.add_text("I didn't eat a salad for lunch today.");
     post2.request_review();
     post2.reject();
+
+    let mut typepost = TypePost::new();
+
+    typepost.add_text("Pizza time :)");
 }
