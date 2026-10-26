@@ -11,6 +11,10 @@ impl Post {
         }
     }
 
+    pub fn content(&self) -> &str {
+        ""
+    }
+
     pub fn add_text(&mut self, content: &str) {
         self.content.push_str(content);
     }
