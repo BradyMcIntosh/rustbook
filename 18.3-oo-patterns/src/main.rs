@@ -11,4 +11,10 @@ fn main() {
 
     post.approve();
     assert_eq!("I ate a salad for lunch today.", post.content());
+
+    let mut post2 = Post::new();
+
+    post2.add_text("I didn't eat a salad for lunch today.");
+    post2.request_review();
+    post2.reject();
 }
