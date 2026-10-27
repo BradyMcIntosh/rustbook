@@ -20,6 +20,22 @@ impl TypeDraftPost {
     pub fn add_text(&mut self, content: &str) {
         self.content.push_str(content);
     }
+
+    pub fn request_review(self) -> TypePendingPost {
+        TypePendingPost { content: self.content }
+    }
+}
+
+pub struct TypePendingPost {
+    content: String,
+}
+
+impl TypePendingPost {
+    pub fn approve(self) -> TypePost {
+        TypePost {
+            content: self.content,
+        }
+    }
 }
 
 pub struct Post {

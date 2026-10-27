@@ -21,4 +21,7 @@ fn main() {
     let mut typepost = TypePost::new();
 
     typepost.add_text("Pizza time :)");
+    let typepost = typepost.request_review();
+    let typepost = typepost.approve();
+    assert_eq!("Pizza time :)", typepost.content())
 }
