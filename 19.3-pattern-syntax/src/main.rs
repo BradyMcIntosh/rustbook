@@ -109,4 +109,10 @@ fn main() {
         }
         _ => (),
     }
+
+    let () = ();
+
+    let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
+
+    println!("Looks like the specimen at ({x},{y}) is {feet}\'{inches}\"");
 }
