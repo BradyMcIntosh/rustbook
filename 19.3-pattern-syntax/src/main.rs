@@ -144,4 +144,20 @@ fn main() {
 
     let _x = 5; // unused variable with NO warning
     let y = 10; // unused variable WITH warning
+
+    let s = Some(String::from("Hello!"));
+
+    // The below snippet won't work!
+    // if let Some(_s) = s {
+    //     println!("found a string");
+    // }
+    // Neither will this!
+    // if let Some(s) = s {
+    //     println!("found a string");
+    // }
+    if let Some(_) = s {
+        println!("found a string");
+    }
+
+    println!("{s:?}");
 }
