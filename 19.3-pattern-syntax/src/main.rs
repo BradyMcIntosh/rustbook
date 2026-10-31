@@ -21,6 +21,10 @@ enum AdvancedMessage {
     ChangeColor(Colour),
 }
 
+fn foo(_: i32, y: i32) {
+    println!("Foo-ing with only the value of y: {y}");
+}
+
 fn main() {
     let x = 1;
 
@@ -115,4 +119,6 @@ fn main() {
     let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
 
     println!("Looks like the specimen at ({x},{y}) is {feet}\'{inches}\"");
+
+    foo(1, 2);
 }
