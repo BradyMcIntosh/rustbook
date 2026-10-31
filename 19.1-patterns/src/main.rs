@@ -22,4 +22,21 @@ fn main() {
     } else {
         println!("Blue is a nice, safe, average colour. Let's go with that.");
     }
+
+    let (tx, rx) = std::sync::mpsc::channel();
+    std::thread::spawn(move || {
+        for val in [1, 2, 3] {
+            tx.send(val).unwrap();
+        }
+    });
+
+    while let Ok(value) = rx.recv() {
+        println!("Message: {value}");
+    }
+
+    let v = vec!['a', 'b', 'c'];
+
+    for (index, value) in v.iter().enumerate() {
+        println!("{index}: \"{value}\"");
+    }
 }
