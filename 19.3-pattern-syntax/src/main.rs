@@ -141,4 +141,7 @@ fn main() {
             println!("Some numbers: {first}, {third}, {fifth}")
         }
     }
+
+    let _x = 5; // unused variable with NO warning
+    let y = 10; // unused variable WITH warning
 }
