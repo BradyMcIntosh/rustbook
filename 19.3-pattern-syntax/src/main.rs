@@ -26,4 +26,11 @@ fn main() {
         3 => println!("thuh-ree"),
         _ => println!("whatevs"),
     }
+
+    let x = 5;
+
+    match x {
+        1..=5 => println!("somewhere between one and five"),
+        _ => println!("anywhere else"),
+    }
 }
