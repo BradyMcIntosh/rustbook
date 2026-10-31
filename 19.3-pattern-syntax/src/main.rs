@@ -33,4 +33,12 @@ fn main() {
         1..=5 => println!("somewhere between one and five"),
         _ => println!("anywhere else"),
     }
+
+    let x = 'c';
+
+    match x {
+        'a'..='j' => println!("early ASCII letter"),
+        'k'..='z' => println!("late ASCII letter"),
+        _ => println!("some other letter"),
+    }
 }
