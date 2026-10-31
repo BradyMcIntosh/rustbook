@@ -3,6 +3,12 @@ struct Point {
     y: i32,
 }
 
+struct Point3D {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
 enum Message {
     Quit,
     Move { x: i32, y: i32 },
@@ -160,4 +166,10 @@ fn main() {
     }
 
     println!("{s:?}");
+
+    let origin = Point3D { x: 0, y: 0, z: 0 };
+
+    match origin {
+        Point3D { x, .. } => println!("the origin point's x is {x}"),
+    }
 }
