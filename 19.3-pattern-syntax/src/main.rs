@@ -10,6 +10,17 @@ enum Message {
     ChangeColor(i32, i32, i32),
 }
 
+enum Colour {
+    Rgb(i32, i32, i32),
+    Hsv(i32, i32, i32),
+}
+
+enum AdvancedMessage {
+    Quit,
+    // ... assume there's more stuff here
+    ChangeColor(Colour),
+}
+
 fn main() {
     let x = 1;
 
@@ -85,5 +96,17 @@ fn main() {
         Message::ChangeColor(r, g, b) => {
             println!("Change colour to RGB ({r},{g},{b})")
         }
+    }
+
+    let msg = AdvancedMessage::ChangeColor(Colour::Hsv(0, 160, 255));
+
+    match msg {
+        AdvancedMessage::ChangeColor(Colour::Rgb(r, g, b)) => {
+            println!("Change colour to RGB ({r},{g},{b})")
+        }
+        AdvancedMessage::ChangeColor(Colour::Hsv(h, s, v)) => {
+            println!("Change colour to HSV ({h},{s},{v})")
+        }
+        _ => (),
     }
 }
