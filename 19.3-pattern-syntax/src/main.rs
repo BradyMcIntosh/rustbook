@@ -188,4 +188,15 @@ fn main() {
         Some(x) => println!("The number {x} is odd!"),
         None => (),
     }
+
+    let x = Some(5);
+    let y = 10;
+
+    match x {
+        Some(50) => println!("50! Booyah!"),
+        Some(n) if n == y => println!("Looks like n is {n}"),
+        _ => println!("As expected, x is {x:?}"),
+    }
+
+    println!("at the end: x = {x:?}, y = {y}");
 }
