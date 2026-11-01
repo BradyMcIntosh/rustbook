@@ -172,4 +172,12 @@ fn main() {
     match origin {
         Point3D { x, .. } => println!("the origin point's x is {x}"),
     }
+
+    let numbers = (2, 4, 8, 16, 32);
+
+    match numbers {
+        (first, .., last) => {
+            println!("Some numbers: {first} and {last}")
+        }
+    }
 }
