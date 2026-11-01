@@ -27,6 +27,10 @@ enum AdvancedMessage {
     ChangeColor(Colour),
 }
 
+enum SimpleMessage {
+    Hello { id: i32 },
+}
+
 fn foo(_: i32, y: i32) {
     println!("Foo-ing with only the value of y: {y}");
 }
@@ -206,5 +210,19 @@ fn main() {
     match x {
         4 | 5 | 6 if y => println!("yes!"),
         _ => println!("no..."),
+    }
+
+    let msg = SimpleMessage::Hello { id: 5 };
+
+    match msg {
+        SimpleMessage::Hello { id: id @ 3..=7 } => {
+            println!("Found an id in range: {id}")
+        }
+        SimpleMessage::Hello { id: 10..=12 } => {
+            println!("Found an id in another range")
+        }
+        SimpleMessage::Hello { id } => {
+            println!("Found some other id: {id}")
+        }
     }
 }
