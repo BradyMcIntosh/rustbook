@@ -14,6 +14,10 @@ fn custom_split_at_mut(values: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32
     }
 }
 
+unsafe extern "C" {
+    safe fn abs(input: i32) -> i32;
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -33,4 +37,6 @@ fn main() {
 
     assert_eq!(a, &mut [1, 2, 3]);
     assert_eq!(b, &mut [4, 5, 6]);
+
+    println!("Absolute value of -3 according to C: {}", abs(-3));
 }
