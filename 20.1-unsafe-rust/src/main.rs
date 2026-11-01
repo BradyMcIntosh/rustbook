@@ -23,6 +23,16 @@ pub extern "C" fn call_from_c() {
     println!("Just called a Rust function from C!");
 }
 
+static HELLO_WORLD: &str = "Hello, world!";
+static mut COUNTER: u32 = 0;
+
+// SAFETY: Must not be called from multiple threads at the same time
+unsafe fn add_to_counter(inc: u32) {
+    unsafe {
+        COUNTER += inc;
+    }
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -44,4 +54,12 @@ fn main() {
     assert_eq!(b, &mut [4, 5, 6]);
 
     println!("Absolute value of -3 according to C: {}", abs(-3));
+
+    println!("Statically screaming: \"{HELLO_WORLD}\"");
+
+    unsafe {
+        // SAFETY: Only calling from single main thread
+        add_to_counter(3);
+        println!("COUNTER: {}", *(&raw const COUNTER));
+    }
 }
