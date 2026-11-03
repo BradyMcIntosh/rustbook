@@ -53,7 +53,7 @@ impl Wizard for Human {
 }
 
 impl Human {
-    fn fly(&self) {
+    pub fn fly(&self) {
         println!("*waving arms furiously*");
     }
 }
