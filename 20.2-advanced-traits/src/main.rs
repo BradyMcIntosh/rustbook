@@ -22,4 +22,6 @@ fn main() {
 
     Point { x: 1, y: 3 }.outline_print();
 
+    let w = VecWrapper(vec![String::from("Hello"), String::from("world")]);
+    println!("w = {w}");
 }
