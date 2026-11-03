@@ -13,4 +13,7 @@ fn main() {
     Pilot::fly(&person);
     Wizard::fly(&person);
     Human::fly(&person);
+
+    println!("A baby dog is called a {}", Dog::baby_name());
+    println!("A baby dog, as an animal, is called a {}", <Dog as Animal>::baby_name());
 }
