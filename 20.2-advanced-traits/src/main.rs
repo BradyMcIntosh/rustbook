@@ -1,4 +1,4 @@
-use advanced_traits::{Meters, Millimeters, Point};
+use advanced_traits::*;
 
 fn main() {
     assert_eq!(
@@ -7,4 +7,10 @@ fn main() {
     );
 
     assert_eq!(Millimeters(2001), Millimeters(1) + Meters(2));
+
+    let person = Human;
+    // person.fly(); <-- this doesn't actually work
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+    // Human::fly(&person); <-- this also doesn't work
 }

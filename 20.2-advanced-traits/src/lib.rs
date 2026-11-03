@@ -29,3 +29,31 @@ impl Add<Meters> for Millimeters {
         Millimeters(self.0 + (other.0 * 1000))
     }
 }
+
+pub trait Pilot {
+    fn fly(&self);
+}
+
+pub trait Wizard {
+    fn fly(&self);
+}
+
+pub struct Human;
+
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&self) {
+        println!("*waving arms furiously*");
+    }
+}
