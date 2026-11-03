@@ -15,7 +15,11 @@ fn main() {
     Human::fly(&person);
 
     println!("A baby dog is called a {}", Dog::baby_name());
-    println!("A baby dog, as an animal, is called a {}", <Dog as Animal>::baby_name());
+    println!(
+        "A baby dog, as an animal, is called a {}",
+        <Dog as Animal>::baby_name()
+    );
 
-    Point{x:1, y:3}.outline_print();
+    Point { x: 1, y: 3 }.outline_print();
+
 }
