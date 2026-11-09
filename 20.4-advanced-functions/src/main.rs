@@ -11,6 +11,14 @@ enum Status {
     Stop,
 }
 
+fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
+    Box::new(|x| x + 1)
+}
+
+fn returns_initialized_closure(init: i32) -> Box<dyn Fn(i32) -> i32> {
+    Box::new(move |x| x + init)
+}
+
 fn main() {
     let number = do_twice(add_one, 1);
     println!("number = {}", number);
@@ -29,5 +37,11 @@ fn main() {
             Status::Value(x) => println!("Status is number '{x}'"),
             Status::Stop => println!("Status is stopped"),
         }
+    }
+
+    let handlers = vec![returns_closure(), returns_initialized_closure(123)];
+    for handler in handlers {
+        let output = handler(5);
+        println!("handler output is {output}");
     }
 }
