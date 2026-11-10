@@ -1,6 +1,8 @@
-use std::fmt;
+use std::{fmt, thread};
 
-pub struct ThreadPool;
+pub struct ThreadPool {
+    threads: Vec<thread::JoinHandle<()>>,
+}
 
 #[derive(Debug, Clone)]
 pub struct PoolCreationError;
@@ -21,7 +23,13 @@ impl ThreadPool {
     /// Panics if size is zero.
     fn new(size: usize) -> ThreadPool {
         assert!(size > 0);
-        ThreadPool
+
+        let mut threads = Vec::with_capacity(size);
+        for _ in 0..size {
+            // TODO
+        }
+
+        ThreadPool { threads }
     }
 
     /// Tries to create a new [`ThreadPool`].
