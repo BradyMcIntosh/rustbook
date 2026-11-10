@@ -7,3 +7,4 @@ edition = "2024"
 members = ["hello_macro_derive"]
 
 [dependencies]
+hello_macro_derive = { path = "../20.5-macros/hello_macro_derive" }
