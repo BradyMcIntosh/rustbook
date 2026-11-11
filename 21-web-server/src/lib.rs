@@ -1,5 +1,6 @@
 use std::{
     fmt,
+    sync::mpsc,
     thread::{self, JoinHandle},
 };
 
@@ -17,8 +18,11 @@ impl Worker {
     }
 }
 
+struct Job {}
+
 pub struct ThreadPool {
     workers: Vec<Worker>,
+    sender: mpsc::Sender<Job>,
 }
 
 #[derive(Debug, Clone)]
@@ -41,12 +45,14 @@ impl ThreadPool {
     fn new(size: usize) -> ThreadPool {
         assert!(size > 0);
 
+        let (sender, receiver) = mpsc::channel();
+
         let mut workers = Vec::with_capacity(size);
         for i in 0..size {
             workers.push(Worker::new(i));
         }
 
-        ThreadPool { workers }
+        ThreadPool { workers, sender }
     }
 
     /// Tries to create a new [`ThreadPool`].
