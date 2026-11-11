@@ -1,7 +1,24 @@
-use std::{fmt, thread};
+use std::{
+    fmt,
+    thread::{self, JoinHandle},
+};
+
+struct Worker {
+    id: usize,
+    handle: JoinHandle<()>,
+}
+
+impl Worker {
+    fn new(id: usize) -> Worker {
+        Worker {
+            id: id,
+            handle: thread::spawn(|| {}),
+        }
+    }
+}
 
 pub struct ThreadPool {
-    threads: Vec<thread::JoinHandle<()>>,
+    workers: Vec<Worker>,
 }
 
 #[derive(Debug, Clone)]
@@ -16,7 +33,7 @@ impl fmt::Display for PoolCreationError {
 impl ThreadPool {
     /// Creates a new [`ThreadPool`].
     ///
-    /// Size is the number of threads in the pool.
+    /// Size is the number of workers in the pool.
     ///
     /// # Panics
     ///
@@ -24,12 +41,12 @@ impl ThreadPool {
     fn new(size: usize) -> ThreadPool {
         assert!(size > 0);
 
-        let mut threads = Vec::with_capacity(size);
-        for _ in 0..size {
-            // TODO
+        let mut workers = Vec::with_capacity(size);
+        for i in 0..size {
+            workers.push(Worker::new(i));
         }
 
-        ThreadPool { threads }
+        ThreadPool { workers }
     }
 
     /// Tries to create a new [`ThreadPool`].
