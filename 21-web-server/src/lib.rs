@@ -13,11 +13,18 @@ impl Worker {
     fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let handle = thread::spawn(move || {
             loop {
-                let job = receiver.lock().unwrap().recv().unwrap();
+                let message = receiver.lock().unwrap().recv();
 
-                println!("Worker {id} is working on a job.");
-
-                job();
+                match message {
+                    Ok(job) => {
+                        println!("Worker {id} is working on a job.");
+                        job();
+                    }
+                    Err(_) => {
+                        println!("Worker {id} is shutting down.");
+                        break;
+                    }
+                }
             }
         });
 
@@ -29,7 +36,7 @@ type Job = Box<dyn FnOnce() + Send + 'static>;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
-    sender: mpsc::Sender<Job>,
+    sender: Option<mpsc::Sender<Job>>,
 }
 
 #[derive(Debug, Clone)]
@@ -60,7 +67,10 @@ impl ThreadPool {
             workers.push(Worker::new(i, Arc::clone(&receiver)));
         }
 
-        ThreadPool { workers, sender }
+        ThreadPool {
+            workers,
+            sender: Some(sender),
+        }
     }
 
     /// Tries to create a new [`ThreadPool`].
@@ -82,6 +92,18 @@ impl ThreadPool {
     {
         let job = Box::new(f);
 
-        self.sender.send(job).unwrap();
+        self.sender.as_ref().unwrap().send(job).unwrap();
+    }
+}
+
+impl Drop for ThreadPool {
+    fn drop(&mut self) {
+        drop(self.sender.take());
+
+        for worker in &mut self.workers.drain(..) {
+            println!("Shutting down worker {}", worker.id);
+
+            worker.handle.join().unwrap();
+        }
     }
 }
